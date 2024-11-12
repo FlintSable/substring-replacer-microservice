@@ -2,6 +2,18 @@ import json
 import requests
 import re
 
+
+
+def process_text(text):
+    print("needs to be implemented")
+    pass
+
+
+def find_replacement(word):
+    # datamuse api part
+    print("needs to be implemented")
+    pass
+
 def process_request():
     filename = "input.json"
     with open(filename, "r") as file:
