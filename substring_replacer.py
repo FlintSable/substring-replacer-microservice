@@ -24,9 +24,27 @@ def process_text(text):
 
 
 def find_replacement(word):
-    # datamuse api part
-    print("needs to be implemented")
-    pass
+    """
+    Finds replacement word using the datamuse api where the replacement contains the original word as a substring.
+    Parameters:
+        word (string): word to find replacement for
+    Returns:
+        str: replacement word containing the original word as a substring or original word if no replacement is found.
+    """
+    url = f"https://api.datamuse.com/words?sp=*{word}*"
+    response = requests.get(url)
+
+    if response.status_code != 200:
+        print("error fetching from datamuse api")
+        return word
+
+    results = response.json()
+
+    for item in results:
+        replacement_word = item["word"]
+        if word in replacement_word and replacement_word != word:
+            return replacement_word
+    return word
 
 def process_request():
     filename = "input.json"
