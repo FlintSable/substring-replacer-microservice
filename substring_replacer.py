@@ -1,30 +1,30 @@
 import json
+import time
 import requests
 import re
 
 """
 n: TODO
-    []: file reading
-    []: file writting
+    [x]: file reading
+    [x]: file writting
     []: case sensitivity
 """
 
-def process_text(text):
+def process_text(word_list):
     """
     Processes the input and formats it for the find_replacement function.
     Parameters:
-        text (string or list)
+        text (list)
     Returns:
         dict: a dictionary where the keys are the original word and values is the replacement word.
     """
-    if isinstance(text, str):
-        words = re.findall(r'\b\w+\b', text)
-    elif isinstance(text, list):
-        words = text
-    else:
-        raise ValueError("Input must be a string or a list of words")
+    replacements = {}
+    for item in word_list:
+        # n: regex: \b word boundry, \w matches any word char, + one or more
+        words = re.findall(r'\b\w+\b', item) if " " in item else [item]
 
-    replacements = {word: find_replacement(word) for word in words}
+        for word in words:
+            replacements[word] = find_replacement(word)
     return replacements
 
 
@@ -36,6 +36,7 @@ def find_replacement(word):
     Returns:
         str: replacement word containing the original word as a substring or original word if no replacement is found.
     """
+    # n: sp is spelled like, * is wild
     url = f"https://api.datamuse.com/words?sp=*{word}*"
     response = requests.get(url)
 
@@ -57,14 +58,21 @@ def process_request():
         data = json.load(file)
 
     if data.get("status") == "pending":
-        replacements = process_text("".join(data["words"]))
-
+        replacements = process_text(data["words"])
+        # print(replacements)
+        # n: update json data
         data["status"] = "completed"
         data["replacements"] = replacements
 
+        # n: write updates to file
         with open(filename, "w") as file:
             json.dump(data, file, indent=2)
 
 
 if __name__=="__main__":
-    process_request()
+    while True:
+        process_request()
+        print("\nchecking")
+        for i in range(2):
+            print("waiting...", i)
+            time.sleep(1)
