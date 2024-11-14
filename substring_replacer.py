@@ -2,7 +2,12 @@ import json
 import requests
 import re
 
-
+"""
+n: TODO
+    []: file reading
+    []: file writting
+    []: case sensitivity
+"""
 
 def process_text(text):
     """
