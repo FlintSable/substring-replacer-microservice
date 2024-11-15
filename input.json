@@ -1,19 +1,13 @@
 {
   "status": "completed",
   "words": [
-    "The cat sat on the mat.",
+    "tree",
     "rock",
-    "apple pie"
+    "water"
   ],
   "replacements": {
-    "The": "The",
-    "cat": "catch",
-    "sat": "ersatz",
-    "on": "bond",
-    "the": "thesaurus",
-    "mat": "matter",
+    "tree": "street",
     "rock": "rocket",
-    "apple": "grapple",
-    "pie": "piece"
+    "water": "watershed"
   }
 }
