@@ -4,18 +4,18 @@ A microservice for dynamically replacing words in a text with alternative words 
 ___
 ## Request Data
 1. Prepare the request
-- Crete a input.json file with a json object with "status": "pending" and a "words" list containing the words or phrases you want processed
-- Example of json object in input.json file.
-```
-{
-  "status": "pending",
-  "words": [
-    "tree",
-    "rock",
-    "water"
-  ]
-}
-```
+  - Crete a input.json file with a json object with "status": "pending" and a "words" list containing the words or phrases you want processed
+  - Example of json object in input.json file.
+  ```
+  {
+    "status": "pending",
+    "words": [
+      "tree",
+      "rock",
+      "water"
+    ]
+  }
+  ```
 2. Submit the request:
 - Write the JSON object to the input.json file to signal to the microservice that there is a new job to process.
 3. Example call:
