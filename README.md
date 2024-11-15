@@ -19,7 +19,7 @@ ___
 2. Submit the request:
 - Write the JSON object to the input.json file to signal to the microservice that there is a new job to process.
 3. Example call:
-`
+```
 import json
 request_data = {
 "status": "pending",
@@ -28,7 +28,7 @@ request_data = {
 
 with open("input.json", "w") as file:
   json.dump(request_data, file, indent=2)
-`
+```
 
 
 ## Receive Data
