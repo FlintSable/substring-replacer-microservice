@@ -4,7 +4,7 @@ A microservice for dynamically replacing words in a text with alternative words 
 ___
 ## Request Data
 1. Prepare the request
-  - Crete a input.json file with a json object with "status": "pending" and a "words" list containing the words or phrases you want processed
+  - Create a input.json file with a json object with "status": "pending" and a "words" list containing the words or phrases you want processed
   - Example of json object in input.json file.
   ```
   {
@@ -30,7 +30,7 @@ with open("input.json", "w") as file:
   json.dump(request_data, file, indent=2)
 ```
 
-
+___
 ## Receive Data
 1. Wait for completion:
 - The substring substituter microservice will update input.json by changing the "status" keys value to "completed" when the job has been completed.
