@@ -63,3 +63,5 @@ while True:
       print("Replacements:", res.get("replacements"))
       break
 ```
+
+![UML Diagram](./s2.6-assgn8-microA.drawio.png)
